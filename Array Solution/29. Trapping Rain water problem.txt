@@ -1,0 +1,24 @@
+long long trappingWater(int arr[], int n){
+        int left[n];
+        int right[n];
+        int maxLeft = INT_MIN;
+        int maxRight = INT_MIN;
+      for(int i = 0;i<n;i++)
+      {
+          
+          maxLeft = max(maxLeft,arr[i]);
+          left[i] = maxLeft;
+      }
+      for(int i = n-1;i>=0;i--)
+      {
+          maxRight = max(maxRight,arr[i]);
+          right[i] = maxRight;
+      }
+      long long ans =0;
+      for(int i = 0;i<n;i++)
+      {
+          ans = ans + (min(left[i],right[i]) - arr[i]);
+      }
+      
+      return ans;
+    }

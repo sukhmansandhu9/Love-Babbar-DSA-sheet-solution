@@ -1,0 +1,23 @@
+int doUnion(int a[], int n, int b[], int m)  {
+        
+       int N = 1e6+1;
+       int count = 0;
+       int arr[N] = {0};
+       for(int i = 0;i<n;i++)
+       {
+           if(arr[a[i]]==0)
+           {
+               arr[a[i]]++;
+               count++;
+           }
+       }
+          for(int i = 0;i<m;i++)
+          {
+           if(arr[b[i]]==0)
+           {
+               arr[b[i]]++;
+               count++;
+           }
+       }
+       return count++;
+    }

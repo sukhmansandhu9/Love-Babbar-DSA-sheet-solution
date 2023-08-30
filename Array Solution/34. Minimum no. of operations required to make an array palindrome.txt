@@ -1,0 +1,25 @@
+ bool checkPalin(int n)
+    {
+        int sum = 0;
+        int rem;
+        int num = n;
+        while(n)
+        {
+            rem = n%10;
+            sum = sum*10 + rem;
+            n = n/10;
+        }
+        return sum ==num;
+    }
+    int PalinArray(int a[], int n)
+    {
+        int ans = 1;
+    	for(int i = 0;i<n;i++)
+    	{
+    	    if(!checkPalin(a[i]))
+    	    {
+    	        return 0;
+    	    }
+    	}
+    	return ans;
+    }

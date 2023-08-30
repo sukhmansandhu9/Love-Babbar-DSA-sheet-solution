@@ -1,0 +1,36 @@
+void threeWayPartition(vector<int>& array,int a, int b)
+    {
+        vector<int> small;
+        vector<int> range;
+        vector<int> large;
+        vector<int> ::iterator it;
+        for(auto element : array)
+        {
+            if(element<a)
+            {
+                small.push_back(element);
+            }
+            if(element>b)
+            {
+                large.push_back(element);
+            }
+            if(element>=a&&element<=b)
+            {
+                range.push_back(element);
+            }
+        
+        }
+        array.clear();
+        for(it=small.begin();it !=small.end();it++)
+        {
+            array.push_back(*it);
+        }
+        for(it=range.begin();it !=range.end();it++)
+        {
+            array.push_back(*it);
+        }
+        for(it = large.begin();it !=large.end();it++)
+        {
+            array.push_back(*it);
+        }
+    }

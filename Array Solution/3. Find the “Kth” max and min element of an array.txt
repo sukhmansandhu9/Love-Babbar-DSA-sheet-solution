@@ -1,0 +1,18 @@
+ int kthSmallest(int arr[], int l, int r, int k) {
+        
+        priority_queue<int> pq;
+        
+        for(int i = l;i<=r;i++)
+        {
+            pq.push(arr[i]);
+        }
+        
+        int t = r-l-k+1;
+        while(t)
+        {
+            pq.pop();
+            t--;
+        }
+        
+        return pq.top();
+    }

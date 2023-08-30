@@ -1,0 +1,39 @@
+int minSwap(int arr[], int n, int k) {
+        
+       int favElem = 0;
+       for(int i = 0;i<n;i++)
+       {
+           if(arr[i]<=k)
+           {
+               favElem++;
+           }
+       }
+       int counter=0;
+       for(int i = 0;i<favElem;i++)
+       {
+           if(arr[i]>k)
+           {
+               counter++;
+           }
+       }
+       int ans = counter;
+       int l = 0;
+       int r = favElem;
+       while(r<n)
+       {
+           if(arr[r]>k)
+           {
+               counter++;
+           }
+           
+           if(arr[l]>k)
+           {
+               counter--;
+           }
+          
+          l++;
+          r++;
+          ans = min(ans,counter);
+       }
+       return ans;
+    }

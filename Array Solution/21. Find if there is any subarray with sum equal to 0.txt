@@ -1,0 +1,20 @@
+bool subArrayExists(int arr[], int n)
+    {
+        map <int,int> mp;
+        int cumSum = 0;
+        for(int i =0;i<n;i++)
+        {
+            if(arr[i] == 0)
+            {
+                return true;
+            }
+            cumSum = cumSum +arr[i];
+            mp[cumSum]++;
+            if(mp[cumSum] >1 || cumSum == 0)
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }

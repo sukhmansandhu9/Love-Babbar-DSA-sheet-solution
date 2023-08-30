@@ -1,0 +1,85 @@
+vector <int> commonElements (int A[], int B[], int C[], int n1, int n2, int n3)
+        {
+          vector<int> v;
+          int i =0,j=0;
+          int k = 0;
+          while(i<n1&&j<n2)
+          {
+              int frontElem;
+              if(v.size()==0)
+              {
+                 frontElem = -999999; 
+              }
+              else {
+                  frontElem = v.front();
+              }
+              int num1 = A[i];
+              int num2 = B[j];
+              if(num1 == num2)
+              {
+                  if(frontElem == num1)
+                  {
+                      i++;
+                      j++;
+                      continue;
+                  }
+                     v.push_back(A[i]);
+                      i++;
+                      j++;
+                
+              }
+                else if(num1<num2)
+              {
+                  i++;
+                  
+              }
+              else
+              {
+                j++;
+              }
+          }
+          int length = v.size();
+          if(length==0)
+          {
+             return v;
+          }
+          vector<int> v2;
+          int q = 0;
+          while(q<length&&k<n3)
+          {
+               int frontElem;
+              if(v2.size()==0){
+                 frontElem = -999999; 
+              }
+              else {
+                  frontElem = v2.front();
+              }
+              int num1 = v[q];
+              int num2 = C[k];
+           if(num1==num2)
+           {
+               if(frontElem == num1)
+               {
+               q++;
+               k++;
+               continue;
+               }
+                v2.push_back(num1);
+               q++;
+               k++;
+           }
+           else if(num1<num2)
+           {
+               q++;
+           }
+           else
+           {
+               k++;
+           }
+          }
+          std::unordered_set<int> s(v2.begin(), v2.end());
+          v2.assign(s.begin(), s.end());
+           sort(v2.begin(), v2.end());
+          return v2;
+          
+        }

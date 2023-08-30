@@ -1,0 +1,27 @@
+ void rearrange(long long *arr, int n) 
+    { 
+    	
+    	int k = 0;
+    	int j = n-1;
+    	int key = arr[n-1] + 1;
+    	
+    	for(int i = 0;i<n;i++){
+    	    
+    	    // Even mein max
+    	    if( i%2 == 0){
+    	        arr[i] = (arr[j]%key)*key + arr[i];
+    	        j--;
+    	    }
+    	    
+    	    // Odd mein min
+    	    if( i%2 == 1){
+    	        arr[i] = (arr[k]%key)*key + arr[i];
+    	        k++;
+    	    }
+    	}
+    	
+    	for(int i = 0;i<n;i++){
+    	    arr[i] = arr[i]/key;
+    	}
+    	 
+    }

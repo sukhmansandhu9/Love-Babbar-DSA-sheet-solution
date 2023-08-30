@@ -1,0 +1,87 @@
+ long long merge(long long arr[],long long l,long long m,long long r)
+    {
+        long long count = 0;
+        long long len1 = m-l+1;
+        long long len2 = r-m;
+        
+        long long dummy1[len1];
+        long long dummy2[len2];
+        
+        for(long long i = 0;i<len1;i++)
+        {
+            dummy1[i] = arr[i+l];
+        }
+        
+        for(long long i = 0;i<len2;i++)
+        {
+            dummy2[i] = arr[i+m+1];
+        }
+        
+        long long ptr1 = 0;
+        long long ptr2 = 0;
+        long long k = l;
+        
+        while(ptr1 < len1 and ptr2<len2)
+        {
+            if(dummy1[ptr1] < dummy2[ptr2])
+            {
+                arr[k] = dummy1[ptr1];
+                ptr1++;
+                k++;
+            }
+            else if(dummy1[ptr1] > dummy2[ptr2])
+            {
+                count = count + len1 - ptr1;
+                arr[k] = dummy2[ptr2];
+                ptr2++;
+                k++;
+            }
+            else
+            {
+                arr[k] = dummy2[ptr2];
+                ptr1++;
+               // ptr2++;
+                k++;
+            }
+        }
+        
+        while(ptr1<len1)
+        {
+            arr[k] = dummy1[ptr1];
+            k++;
+            ptr1++;
+        }
+        
+        while(ptr2<len2)
+        {
+            arr[k] = dummy2[ptr2];
+            ptr2++;
+            k++;
+        }
+        
+        return count;
+    }
+    
+    
+    void mergeSort(long long arr[],long long l,long long r,long long &count)
+    {
+        
+        if(l< r)
+        {
+            long long mid = l + (r-l)/2;
+           mergeSort(arr,l,mid,count);
+            mergeSort(arr,mid+1,r,count);
+          count +=  merge(arr,l,mid,r);
+        }
+        
+    }
+    
+    long long int inversionCount(long long arr[], long long N)
+    {
+        long long count = 0;
+        long long l = 0;
+        long long r = N -1;
+       mergeSort(arr,l,r,count);
+        
+        return count;
+    }

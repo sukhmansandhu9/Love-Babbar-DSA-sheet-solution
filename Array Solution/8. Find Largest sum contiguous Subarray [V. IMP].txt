@@ -1,0 +1,25 @@
+long long maxSubarraySum(int arr[], int n){
+        
+     long long maxSum = arr[0];
+     long long currSum = 0;
+     int i = 0;
+     
+     while(i<n)
+     {
+         currSum += arr[i];
+         if(currSum >0)
+         {
+             maxSum = max(maxSum,currSum);
+             
+         }
+         else 
+         {
+             
+             maxSum = max(maxSum,currSum);
+             currSum = 0;
+        
+         }
+         i++;
+     }
+     return maxSum;
+    }

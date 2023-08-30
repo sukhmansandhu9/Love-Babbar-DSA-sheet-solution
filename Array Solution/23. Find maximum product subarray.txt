@@ -1,0 +1,23 @@
+long long maxProduct(vector<int> arr, int n) {
+	   
+	     long long max_prod = arr[0];
+    long long min_prod = arr[0];
+    // Initialize variable to keep track of overall maximum product
+    long long overall_max_prod = arr[0];
+
+    for (int i = 1; i < n; i++) {
+        // If current element is negative, swap max and min product subarray
+        if (arr[i] < 0) {
+            swap(max_prod, min_prod);
+        }
+
+        // Update the max and min product subarray ending at the current position
+        max_prod = max((long long) arr[i], max_prod * arr[i]);
+        min_prod = min((long long) arr[i], min_prod * arr[i]);
+
+        // Update the overall maximum product
+        overall_max_prod = max(overall_max_prod, max_prod);
+    }
+
+    return overall_max_prod;
+	}
